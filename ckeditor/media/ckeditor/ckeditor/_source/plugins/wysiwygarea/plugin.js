@@ -14,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	var nonExitableElementNames = { table:1,pre:1 };
 
 	// Matching an empty paragraph at the end of document.
-	var emptyParagraphRegexp = /\s*<(p|div|address|h\d|center)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\1>)?\s*(?=$|<\/body>)/gi;
+	var emptyParagraphRegexp = /\s*<(p|div|address|h\d|center|li)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\1>)?\s*(?=$|<\/body>)/gi;
 
 	function onInsertHtml( evt )
 	{
@@ -122,7 +122,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			range.moveToPosition( lastElement, CKEDITOR.POSITION_AFTER_END );
 
 			var next = lastElement.getNextSourceNode( true );
-			if ( next && next.type == CKEDITOR.NODE_ELEMENT )
+			var lastElementIsInline = CKEDITOR.dtd.$inline[ lastElement.getName() ];
+			if ( !lastElementIsInline && next && next.type == CKEDITOR.NODE_ELEMENT )
 				range.moveToElementEditStart( next );
 
 			selection.selectRanges( [ range ] );
@@ -445,6 +446,26 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							} );
 						}
 
+						if ( CKEDITOR.env.gecko )
+						{
+							domDocument.on( 'mouseup', function( ev )
+							{
+								if ( ev.data.$.button == 2 )
+								{
+									var target = ev.data.getTarget();
+
+									// Prevent right click from selecting an empty block even
+									// when selection is anchored inside it. (#5845)
+									if ( !target.getOuterHtml().replace( emptyParagraphRegexp, '' ) )
+									{
+										var range = new CKEDITOR.dom.range( domDocument );
+										range.moveToElementEditStart( target );
+										range.select( true );
+									}
+								}
+							} );
+						}
+
 						// Webkit: avoid from editing form control elements content.
 						if ( CKEDITOR.env.webkit )
 						{
@@ -478,7 +499,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								// the focus.
 								if ( evt.data.getTarget().equals( htmlElement ) )
 								{
-									CKEDITOR.env.gecko && blinkCursor();
+									if ( CKEDITOR.env.gecko && CKEDITOR.env.version >= 10900 )
+										blinkCursor();
 									focusGrabber.focus();
 								}
 							} );
@@ -492,7 +514,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						domWindow.on( 'focus', function()
 							{
 								var doc = editor.document;
-								if ( CKEDITOR.env.gecko || CKEDITOR.env.opera )
+
+								if ( CKEDITOR.env.gecko && CKEDITOR.env.version >= 10900 )
+									blinkCursor();
+								else if ( CKEDITOR.env.opera )
 									doc.getBody().focus();
 								else if ( CKEDITOR.env.webkit )
 								{
@@ -707,8 +732,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 										config.docType +
 										'<html dir="' + config.contentsLangDirection + '"' +
 											' lang="' + ( config.contentsLanguage || editor.langCode ) + '">' +
-										'<title>' + frameLabel + '</title>' +
 										'<head>' +
+											'<title>' + frameLabel + '</title>' +
 											baseTag +
 											headExtra +
 										'</head>' +
@@ -734,9 +759,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									docType = fullPage && editor.docType,
 									doc = iframe.getFrameDocument();
 
-								var last = doc.getBody().getLast();
-								if ( last.type == CKEDITOR.NODE_ELEMENT && last.is( 'br' ) )
-									last.remove();
+								// BR at the end of document is mozilla editor bogus node (#5293).
+								if ( CKEDITOR.env.gecko )
+								{
+									var last = doc.getBody().getLast();
+									if ( last.type == CKEDITOR.NODE_ELEMENT && last.is( 'br' ) )
+										last.remove();
+								}
+
 
 								var data = fullPage
 									? doc.getDocumentElement().getOuterHtml()
@@ -777,6 +807,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								editor.document.clearCustomData();
 
 								iframe.clearCustomData();
+
+								/*
+								* IE BUG: When destroying editor DOM with the selection remains inside
+								* editing area would break IE7/8's selection system, we have to put the editing
+								* iframe offline first. (#3812 and #5441)
+								*/
+								iframe.remove();
 							},
 
 							unload : function( holderElement )
@@ -819,17 +856,41 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 			// IE8 stricts mode doesn't have 'contentEditable' in effect
 			// on element unless it has layout. (#5562)
-			if ( CKEDITOR.env.ie8 )
+			if ( CKEDITOR.env.ie8Compat )
+			{
 				editor.addCss( 'html.CSS1Compat [contenteditable=false]{ min-height:0 !important;}' );
 
+				var selectors = [];
+				for ( var tag in CKEDITOR.dtd.$removeEmpty )
+					selectors.push( 'html.CSS1Compat ' + tag + '[contenteditable=false]' );
+				editor.addCss( selectors.join( ',' ) + '{ display:inline-block;}' );
+			}
+
 			// Switch on design mode for a short while and close it after then.
-			function blinkCursor()
+			function blinkCursor( retry )
 			{
-				editor.document.$.designMode = 'on';
-				setTimeout( function ()
-				{
-					editor.document.$.designMode = 'off';
-				}, 50 );
+				CKEDITOR.tools.tryThese(
+					function()
+					{
+						editor.document.$.designMode = 'on';
+						setTimeout( function ()
+						{
+							editor.document.$.designMode = 'off';
+							editor.document.getBody().focus();
+						}, 50 );
+					},
+					function()
+					{
+						// The above call is known to fail when parent DOM
+						// tree layout changes may break design mode. (#5782)
+						// Refresh the 'contentEditable' is a cue to this.
+						editor.document.$.designMode = 'off';
+						var body = editor.document.getBody();
+						body.setAttribute( 'contentEditable', false );
+						body.setAttribute( 'contentEditable', true );
+						// Try it again once..
+						!retry && blinkCursor( 1 );
+					});
 			}
 
 			// Create an invisible element to grab focus.
@@ -858,7 +919,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			editor.on( 'insertElement', function ( evt )
 			{
 				var element = evt.data;
-				if ( element.type = CKEDITOR.NODE_ELEMENT
+				if ( element.type == CKEDITOR.NODE_ELEMENT
 						&& ( element.is( 'input' ) || element.is( 'textarea' ) ) )
 				{
 					element.setAttribute( 'contentEditable', false );
