@@ -47,6 +47,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			else
 				this.document.$.execCommand( 'inserthtml', false, data );
 
+			if ( CKEDITOR.env.webkit )
+			{
+				this.document.$.execCommand( 'inserthtml', false, '<span id="cke_paste_marker" cke_temp="1"></span>' );
+				var marker = this.document.getById( 'cke_paste_marker' );
+				marker.scrollIntoView();
+				marker.remove();
+			}
+
 			CKEDITOR.tools.setTimeout( function()
 				{
 					this.fire( 'saveSnapshot' );
@@ -758,15 +766,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									fullPage = config.fullPage,
 									docType = fullPage && editor.docType,
 									doc = iframe.getFrameDocument();
-
-								// BR at the end of document is mozilla editor bogus node (#5293).
-								if ( CKEDITOR.env.gecko )
-								{
-									var last = doc.getBody().getLast();
-									if ( last.type == CKEDITOR.NODE_ELEMENT && last.is( 'br' ) )
-										last.remove();
-								}
-
 
 								var data = fullPage
 									? doc.getDocumentElement().getOuterHtml()

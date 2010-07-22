@@ -463,6 +463,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			var writer = this.writer,
 				fragment = CKEDITOR.htmlParser.fragment.fromHtml( html, fixForBody );
 
+			// Take the last fragment children.
+			var children = fragment.children,
+				lastChildren = children.length && children[ children.length - 1 ];
+
+			// If the last children is a <br>, we assume it's a bogus, so
+			// remove it first. (#5293)
+			if ( lastChildren && lastChildren.name && lastChildren.name == 'br' )
+				children.pop();
+
 			writer.reset();
 
 			fragment.writeHtml( writer, this.htmlFilter );
