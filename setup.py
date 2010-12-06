@@ -27,4 +27,7 @@ setup(
     author_email='dev@dwaiter.com',
     url='http://bitbucket.org/dwaiter/django-ckeditor/',
     packages=['ckeditor'],
+    setup_requires=['setuptools_git'],
+    include_package_data=True,
+    zip_safe=False,
 )
