@@ -109,26 +109,19 @@ CKEDITOR.lang['pt-br'] =
 		unavailable		: '%1<span class="cke_accessibility">, indisponível</span>'
 	},
 
-	contextmenu :
-	{
-		options : 'Opções Menu de Contexto'
-	},
-
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Inserir Caractere Especial',
-		title		: 'Selecione um Caractere Especial',
-		options : 'Opções de Caractere Especial'
+		title		: 'Selecione um Caractere Especial'
 	},
 
 	// Link dialog.
 	link :
 	{
-		toolbar		: 'Inserir/Editar Link',
-		other 		: '<outro>',
-		menu		: 'Editar Link',
-		title		: 'Editar Link',
+		toolbar		: 'Inserir/Editar Hiperlink',
+		menu		: 'Editar Hiperlink',
+		title		: 'Hiperlink',
 		info		: 'Informações',
 		target		: 'Destino',
 		upload		: 'Enviar ao Servidor',
@@ -186,30 +179,6 @@ CKEDITOR.lang['pt-br'] =
 		title		: 'Formatar Âncora',
 		name		: 'Nome da Âncora',
 		errorName	: 'Por favor, digite o nome da âncora'
-	},
-
-	// List style dialog
-	list:
-	{
-		numberedTitle		: 'Propriedades da Lista Numerada',
-		bulletedTitle		: 'Propriedades da Lista sem Numeros',
-		type				: 'Tipo',
-		start				: 'Início',
-		validateStartNumber				:'List start number must be a whole number.', // MISSING
-		circle				: 'Círculo',
-		disc				: 'Disco',
-		square				: 'Quadrado',
-		none				: 'Nenhum',
-		notset				: '<não definido>',
-		armenian			: 'Numeração Armêna',
-		georgian			: 'Numeração da Geórgia (an, ban, gan, etc.)',
-		lowerRoman			: 'Numeração Romana minúscula (i, ii, iii, iv, v, etc.)',
-		upperRoman			: 'Numeração Romana maiúscula (I, II, III, IV, V, etc.)',
-		lowerAlpha			: 'Numeração Alfabética minúscula (a, b, c, d, e, etc.)',
-		upperAlpha			: 'Numeração Alfabética Maiúscula (A, B, C, D, E, etc.)',
-		lowerGreek			: 'Numeração Grega minúscula (alpha, beta, gamma, etc.)',
-		decimal				: 'Numeração Decimal (1, 2, 3, etc.)',
-		decimalLeadingZero	: 'Numeração Decimal com zeros (01, 02, 03, etc.)'
 	},
 
 	// Find And Replace Dialog
@@ -506,8 +475,7 @@ CKEDITOR.lang['pt-br'] =
 	smiley :
 	{
 		toolbar	: 'Emoticon',
-		title	: 'Inserir Emoticon',
-		options : 'Opções de Emoticons'
+		title	: 'Inserir Emoticon'
 	},
 
 	elementsPath :
@@ -534,11 +502,11 @@ CKEDITOR.lang['pt-br'] =
 	clipboard :
 	{
 		title		: 'Colar',
-		cutError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de recortar automaticamente. Por favor, utilize o teclado para recortar (Ctrl/Cmd+X).',
-		copyError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de copiar automaticamente. Por favor, utilize o teclado para copiar (Ctrl/Cmd+C).',
-		pasteMsg	: 'Transfira o link usado na caixa usando o teclado com (<STRONG>Ctrl/Cmd+V</STRONG>) e <STRONG>OK</STRONG>.',
-		securityMsg	: 'As configurações de segurança do seu navegador não permitem que o editor acesse os dados da área de transferência diretamente. Por favor cole o conteúdo manualmente nesta janela.',
-		pasteArea	: 'Área para Colar'
+		cutError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de recortar automaticamente. Por favor, utilize o teclado para recortar (Ctrl+X).',
+		copyError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de copiar automaticamente. Por favor, utilize o teclado para copiar (Ctrl+C).',
+		pasteMsg	: 'Transfira o link usado no box usando o teclado com (<STRONG>Ctrl+V</STRONG>) e <STRONG>OK</STRONG>.',
+		securityMsg	: 'As configurações de segurança do seu navegador não permitem que o editor acesse os dados da área de transferência diretamente. Por favor cole o conteúdo novamente nesta janela.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
@@ -558,8 +526,7 @@ CKEDITOR.lang['pt-br'] =
 	templates :
 	{
 		button			: 'Modelos de layout',
-		title			: 'Modelo de layout de conteúdo',
-		options : 'Opções de Template',
+		title			: 'Modelo de layout do conteúdo',
 		insertOption	: 'Substituir o conteúdo atual',
 		selectPromptMsg	: 'Selecione um modelo de layout para ser aberto no editor<br>(o conteúdo atual será perdido):',
 		emptyListMsg	: '(Não foram definidos modelos de layout)'
@@ -679,12 +646,11 @@ CKEDITOR.lang['pt-br'] =
 
 	scayt :
 	{
-		title			: 'Correção ortográfica durante a digitação',
-		opera_title		: 'Não suportado no Opera',
-		enable			: 'Habilitar correção ortográfica durante a digitação',
-		disable			: 'Desabilitar correção ortográfica durante a digitação',
-		about			: 'Sobre a correção ortográfica durante a digitação',
-		toggle			: 'Ativar/desativar correção ortográfica durante a digitação',
+		title			: 'Correção gramatical durante a digitação',
+		enable			: 'Habilitar SCAYT',
+		disable			: 'Desabilitar SCAYT',
+		about			: 'Sobre o SCAYT',
+		toggle			: 'Ativar/desativar SCAYT',
 		options			: 'Opções',
 		langs			: 'Idiomas',
 		moreSuggestions	: 'Mais sugestões',
@@ -692,23 +658,9 @@ CKEDITOR.lang['pt-br'] =
 		ignoreAll		: 'Ignorar todas',
 		addWord			: 'Adicionar palavra',
 		emptyDic		: 'O nome do dicionário não deveria estar vazio.',
-
 		optionsTab		: 'Opções',
-		allCaps			: 'Ignorar palavras maiúsculas',
-		ignoreDomainNames : 'Ignorar nomes de domínio',
-		mixedCase		: 'Ignorar palavras com maiúsculas e minúsculas misturadas',
-		mixedWithDigits	: 'Ignorar palavras com números',
-
-		languagesTab	: 'Idiomas',
-
+		languagesTab	: 'Línguas',
 		dictionariesTab	: 'Dicionários',
-		dic_field_name	: 'Nome do Dicionário',
-		dic_create		: 'Criar',
-		dic_restore		: 'Restaurar',
-		dic_delete		: 'Excluir',
-		dic_rename		: 'Renomear',
-		dic_info		: 'Inicialmente, o dicionário do usuário fica armazenado em um Cookie. Porém, Cookies tem tamanho limitado, portanto quand o dicionário do usuário atingir o tamanho limite poderá ser armazenado no nosso servidor. Para armazenar seu dicionário pessoal no nosso servidor deverá especificar um nome para ele. Se já tiver um dicionário armazenado por favor especifique o seu nome e clique em Restaurar.',
-
 		aboutTab		: 'Sobre'
 	},
 
@@ -735,11 +687,10 @@ CKEDITOR.lang['pt-br'] =
 
 	colordialog :
 	{
-		title		: 'Selecione uma cor',
-		options	:	'Opções de Cor',
-		highlight	: 'Grifar',
-		selected	: 'Cor Selecionada',
-		clear		: 'Limpar'
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
 	toolbarCollapse	: 'Diminuir Barra de Ferramentas',

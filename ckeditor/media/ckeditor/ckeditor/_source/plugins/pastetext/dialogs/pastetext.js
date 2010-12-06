@@ -46,7 +46,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							{
 								type : 'textarea',
 								id : 'content',
-								className : 'cke_pastetext',
+								style : 'width:340px;height:170px',
+								html :
+									'<textarea style="' +
+										'width:346px;' +
+										'height:170px;' +
+										'resize: none;' +
+										'border:1px solid black;' +
+										'background-color:white">' +
+									'</textarea>',
 
 								onLoad : function()
 								{

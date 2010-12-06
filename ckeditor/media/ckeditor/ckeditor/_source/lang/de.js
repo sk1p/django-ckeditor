@@ -110,24 +110,17 @@ CKEDITOR.lang['de'] =
 		unavailable		: '%1<span class="cke_accessibility">, nicht verfügbar</span>'
 	},
 
-	contextmenu :
-	{
-		options : 'Context Menu Optionen'
-	},
-
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Sonderzeichen einfügen/editieren',
-		title		: 'Sonderzeichen auswählen',
-		options : 'Sonderzeichen Optionen'
+		title		: 'Sonderzeichen auswählen'
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Link einfügen/editieren',
-		other 		: '<andere>',
 		menu		: 'Link editieren',
 		title		: 'Link',
 		info		: 'Link-Info',
@@ -187,30 +180,6 @@ CKEDITOR.lang['de'] =
 		title		: 'Anker-Eigenschaften',
 		name		: 'Anker Name',
 		errorName	: 'Bitte geben Sie den Namen des Ankers ein'
-	},
-
-	// List style dialog
-	list:
-	{
-		numberedTitle		: 'Nummerierte Listen-Eigenschaften',
-		bulletedTitle		: 'Listen-Eigenschaften',
-		type				: 'Typ',
-		start				: 'Start',
-		validateStartNumber				:'List Startnummer muss eine ganze Zahl sein.',
-		circle				: 'Ring',
-		disc				: 'Kreis',
-		square				: 'Quadrat',
-		none				: 'Keine',
-		notset				: '<nicht gesetzt>',
-		armenian			: 'Armenisch Nummerierung',
-		georgian			: 'Georgisch Nummerierung (an, ban, gan, etc.)',
-		lowerRoman			: 'Klein römisch (i, ii, iii, iv, v, etc.)',
-		upperRoman			: 'Groß römisch (I, II, III, IV, V, etc.)',
-		lowerAlpha			: 'Klein alpha (a, b, c, d, e, etc.)',
-		upperAlpha			: 'Groß alpha (A, B, C, D, E, etc.)',
-		lowerGreek			: 'Klein griechisch (alpha, beta, gamma, etc.)',
-		decimal				: 'Dezimal (1, 2, 3, etc.)',
-		decimalLeadingZero	: 'Dezimal mit führende  Null (01, 02, 03, etc.)'
 	},
 
 	// Find And Replace Dialog
@@ -507,8 +476,7 @@ CKEDITOR.lang['de'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Smiley auswählen',
-		options : 'Smiley Optionen'
+		title	: 'Smiley auswählen'
 	},
 
 	elementsPath :
@@ -560,7 +528,6 @@ CKEDITOR.lang['de'] =
 	{
 		button			: 'Vorlagen',
 		title			: 'Vorlagen',
-		options : 'Vorlagen Optionen',
 		insertOption	: 'Aktuellen Inhalt ersetzen',
 		selectPromptMsg	: 'Klicken Sie auf eine Vorlage, um sie im Editor zu öffnen (der aktuelle Inhalt wird dabei gelöscht!):',
 		emptyListMsg	: '(keine Vorlagen definiert)'
@@ -681,7 +648,6 @@ CKEDITOR.lang['de'] =
 	scayt :
 	{
 		title			: 'Rechtschreibprüfung während der Texteingabe',
-		opera_title		: 'Nicht von Opera unterstützt',
 		enable			: 'SCAYT einschalten',
 		disable			: 'SCAYT ausschalten',
 		about			: 'Über SCAYT',
@@ -693,23 +659,9 @@ CKEDITOR.lang['de'] =
 		ignoreAll		: 'Alle ignorieren',
 		addWord			: 'Wort hinzufügen',
 		emptyDic		: 'Wörterbuchname sollte leer sein.',
-
 		optionsTab		: 'Optionen',
-		allCaps			: 'Groß geschriebenen Wörter ignorieren',
-		ignoreDomainNames : 'Domain-Namen ignorieren',
-		mixedCase		: 'Wörter mit gemischte Setzkasten ignorieren',
-		mixedWithDigits	: 'Wörter mit Zahlen ignorieren',
-
 		languagesTab	: 'Sprachen',
-
 		dictionariesTab	: 'Wörterbücher',
-		dic_field_name	: 'Wörterbuchname',
-		dic_create		: 'Erzeugen',
-		dic_restore		: 'Wiederherstellen',
-		dic_delete		: 'Löschen',
-		dic_rename		: 'Umbenennen',
-		dic_info		: 'Anfangs wird das Benutzerwörterbuch in einem Cookie gespeichert. Allerdings sind Cookies in der Größe begrenzt. Wenn das Benutzerwörterbuch bis zu einem Punkt wächst, wo es nicht mehr in einem Cookie gespeichert werden kann, wird das Benutzerwörterbuch auf dem Server gespeichert. Um Ihr persönliches Wörterbuch auf dem Server zu speichern, müssen Sie einen Namen für das Wörterbuch angeben. Falls  Sie schon ein gespeicherte Wörterbuch haben, geben Sie bitte dessen Namen ein und klicken Sie auf die Schaltfläche Wiederherstellen.',
-
 		aboutTab		: 'Über'
 	},
 
@@ -736,11 +688,10 @@ CKEDITOR.lang['de'] =
 
 	colordialog :
 	{
-		title		: 'Farbe wählen',
-		options	:	'Farbeoptionen',
-		highlight	: 'Hervorheben',
-		selected	: 'Ausgewählte Farbe',
-		clear		: 'Entfernen'
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
 	toolbarCollapse	: 'Symbolleiste einklappen',

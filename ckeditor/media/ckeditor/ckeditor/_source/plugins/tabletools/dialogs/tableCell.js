@@ -511,14 +511,9 @@ CKEDITOR.dialog.add( 'cellProperties', function( editor )
 			},
 			onOk : function()
 			{
-				var selection = this._.editor.getSelection(),
-					bookmarks = selection.createBookmarks();
-
 				var cells = this.cells;
 				for ( var i = 0 ; i < cells.length ; i++ )
 					this.commitContent( cells[ i ] );
-
-				selection.selectBookmarks( bookmarks );
 			}
 		};
 	} );

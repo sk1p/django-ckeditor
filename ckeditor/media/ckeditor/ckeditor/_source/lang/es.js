@@ -110,24 +110,17 @@ CKEDITOR.lang['es'] =
 		unavailable		: '%1<span class="cke_accessibility">, no disponible</span>'
 	},
 
-	contextmenu :
-	{
-		options : 'Opciones del menú contextual'
-	},
-
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insertar Caracter Especial',
-		title		: 'Seleccione un caracter especial',
-		options : 'Opciones de caracteres especiales'
+		title		: 'Seleccione un caracter especial'
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Insertar/Editar Vínculo',
-		other 		: '<otro>',
 		menu		: 'Editar Vínculo',
 		title		: 'Vínculo',
 		info		: 'Información de Vínculo',
@@ -187,30 +180,6 @@ CKEDITOR.lang['es'] =
 		title		: 'Propiedades de Referencia',
 		name		: 'Nombre de la Referencia',
 		errorName	: 'Por favor, complete el nombre de la Referencia'
-	},
-
-	// List style dialog
-	list:
-	{
-		numberedTitle		: 'Propiedades de lista numerada',
-		bulletedTitle		: 'Propiedades de viñetas',
-		type				: 'Tipo',
-		start				: 'Inicio',
-		validateStartNumber				:'List start number must be a whole number.', // MISSING
-		circle				: 'Círculo',
-		disc				: 'Disco',
-		square				: 'Cuadrado',
-		none				: 'Ninguno',
-		notset				: '<sin establecer>',
-		armenian			: 'Numeración armenia',
-		georgian			: 'Numeración georgiana (an, ban, gan, etc.)',
-		lowerRoman			: 'Números romanos en minúsculas (i, ii, iii, iv, v, etc.)',
-		upperRoman			: 'Números romanos en mayúsculas (I, II, III, IV, V, etc.)',
-		lowerAlpha			: 'Alfabeto en minúsculas (a, b, c, d, e, etc.)',
-		upperAlpha			: 'Alfabeto en mayúsculas  (A, B, C, D, E, etc.)',
-		lowerGreek			: 'Letras griegas (alpha, beta, gamma, etc.)',
-		decimal				: 'Decimal (1, 2, 3, etc.)',
-		decimalLeadingZero	: 'Decimal con cero inicial (01, 02, 03, etc.)'
 	},
 
 	// Find And Replace Dialog
@@ -506,9 +475,8 @@ CKEDITOR.lang['es'] =
 
 	smiley :
 	{
-		toolbar	: 'Emoticonos',
-		title	: 'Insertar un Emoticon',
-		options : 'Opciones de emoticonos'
+		toolbar	: 'Emoticons',
+		title	: 'Insertar un Emoticon'
 	},
 
 	elementsPath :
@@ -535,9 +503,9 @@ CKEDITOR.lang['es'] =
 	clipboard :
 	{
 		title		: 'Pegar',
-		cutError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de cortado.\r\nPor favor use el teclado (Ctrl/Cmd+X).',
-		copyError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de copiado.\r\nPor favor use el teclado (Ctrl/Cmd+C).',
-		pasteMsg	: 'Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl/Cmd+V</STRONG>);\r\nluego presione <STRONG>Aceptar</STRONG>.',
+		cutError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de cortado.\r\nPor favor use el teclado (Ctrl+X).',
+		copyError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de copiado.\r\nPor favor use el teclado (Ctrl+C).',
+		pasteMsg	: 'Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl+V</STRONG>);\r\nluego presione <STRONG>Aceptar</STRONG>.',
 		securityMsg	: 'Debido a la configuración de seguridad de su navegador, el editor no tiene acceso al portapapeles.\r\nEs necesario que lo pegue de nuevo en esta ventana.',
 		pasteArea	: 'Zona de pegado'
 	},
@@ -560,7 +528,6 @@ CKEDITOR.lang['es'] =
 	{
 		button			: 'Plantillas',
 		title			: 'Contenido de Plantillas',
-		options : 'Opciones de plantillas',
 		insertOption	: 'Reemplazar el contenido actual',
 		selectPromptMsg	: 'Por favor selecciona la plantilla a abrir en el editor<br>(el contenido actual se perderá):',
 		emptyListMsg	: '(No hay plantillas definidas)'
@@ -681,7 +648,6 @@ CKEDITOR.lang['es'] =
 	scayt :
 	{
 		title			: 'Comprobar Ortografía Mientras Escribe',
-		opera_title		: 'No soportado en Opera',
 		enable			: 'Activar Corrector',
 		disable			: 'Desactivar Corrector',
 		about			: 'Acerca de Corrector',
@@ -693,23 +659,9 @@ CKEDITOR.lang['es'] =
 		ignoreAll		: 'Ignorar Todas',
 		addWord			: 'Añadir palabra',
 		emptyDic		: 'El nombre del diccionario no puede estar en blanco.',
-
 		optionsTab		: 'Opciones',
-		allCaps			: 'Omitir palabras en MAYÚSCULAS',
-		ignoreDomainNames : 'Omitir nombres de dominio',
-		mixedCase		: 'Ignorar palabras con combinación de mayúsculas y minúsculas',
-		mixedWithDigits	: 'Omitir palabras con números',
-
 		languagesTab	: 'Idiomas',
-
 		dictionariesTab	: 'Diccionarios',
-		dic_field_name	: 'Nombre del diccionario',
-		dic_create		: 'Crear',
-		dic_restore		: 'Recuperar',
-		dic_delete		: 'Borrar',
-		dic_rename		: 'Renombrar',
-		dic_info		: 'Inicialmente el Diccionario de usuario se guarda en una Cookie. Sin embargo, las cookies están limitadas en tamaño. Cuando el diccionario crece a un punto en el que no se puede guardar en una Cookie, el diccionario puede ser almacenado en nuestro servidor. Para almacenar su diccionario personalizado en nuestro servidor debe especificar un nombre para su diccionario. Si ya ha guardado un diccionaro, por favor, escriba su nombre y pulse el botón Recuperar',
-
 		aboutTab		: 'Acerca de'
 	},
 
@@ -737,7 +689,6 @@ CKEDITOR.lang['es'] =
 	colordialog :
 	{
 		title		: 'Elegir color',
-		options	:	'Opciones de colores',
 		highlight	: 'Muestra',
 		selected	: 'Elegido',
 		clear		: 'Borrar'
